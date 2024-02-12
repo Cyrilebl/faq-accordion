@@ -39,6 +39,7 @@ h1 {
 
 p {
   color: var(--dark-purple);
+  font-size: 0.9em;
   opacity: 60%;
   display: none;
 }
