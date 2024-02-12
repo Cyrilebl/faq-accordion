@@ -51,6 +51,7 @@ hr {
 .block {
   background-color: var(--white);
   border-radius: 10px;
+  box-shadow: 0px 1px 8px var(--hover);
   padding: 35px;
   max-width: 520px;
 }
@@ -98,7 +99,7 @@ hr {
 
 .attribution a {
   text-decoration: none;
-  color: var(--purple);
+  color: var(--hover);
 }
 
 @media (max-width: 840px) {
