@@ -1,32 +1,20 @@
-const blockSubtitle = document.querySelectorAll(".block__subtitle");
-const blockText = document.querySelectorAll(".block__text");
-const button = document.querySelectorAll(".button");
+const accordion = document.querySelectorAll(".block");
 
-let currentlyOpenIndex = null;
+for (let i = 0; i < accordion.length; i++) {
+  accordion[i].addEventListener("click", function () {
+    // Check if the clicked element already has the "active" class
+    const isOpen = this.classList.contains("active");
 
-blockSubtitle.forEach(function (subtitle, index) {
-  subtitle.addEventListener("click", () => {
-    // Find the corresponding "block__text" for the current "block__subtitle"
-    let text = blockText[index];
-    let buttonImg = button[index];
+    // Remove "active" class from all elements with a delay
+    for (let j = 0; j < accordion.length; j++) {
+      accordion[j].classList.remove("active");
+    }
 
-    // Check if the clicked subtitle is already open
-    if (currentlyOpenIndex === index) {
-      // Close the associated "block__text" and update the button image
-      text.style.display = "none";
-      buttonImg.src = "assets/images/icon-plus.svg";
-      currentlyOpenIndex = null;
-    } else {
-      // Check if there is a currently open text block
-      if (currentlyOpenIndex !== null) {
-        blockText[currentlyOpenIndex].style.display = "none";
-        button[currentlyOpenIndex].src = "assets/images/icon-plus.svg";
-      }
-
-      // Toggle the visibility of the clicked blockText
-      text.style.display = "block";
-      buttonImg.src = "assets/images/icon-minus.svg";
-      currentlyOpenIndex = index;
+    // If the clicked element wasn't open, open it after a delay
+    if (!isOpen) {
+      setTimeout(() => {
+        this.classList.add("active");
+      }, accordion.length * 120);
     }
   });
-});
+}
